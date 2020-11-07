@@ -36,7 +36,6 @@ def register():
     print(usrn, pwd, eml)
     connection = sqlite3.connect(currentdirectory + "\\login.db")
     cur = connection.cursor()
-    found = 0
     for row in cur.execute("SELECT username, password, email from userlogin"):
         userid = row[0]
         password = row[1]
