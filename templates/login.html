@@ -12,11 +12,11 @@
 <body>
   <div class="login-page">
     <div class="form">
-      <form class="register-form" action="{{ url_for('register') }}" method="post">
+      <form class="register-form" action="{{ url_for('registration') }}" method="post">
         <input type="text" name= "newusername" placeholder="name"/>
         <input type="password" name="newpassword" placeholder="password"/>
         <input type="text" name="newemail" placeholder="email address"/>
-        <button><a href="profile.html">Create</a></button>
+        <button>Create</button>
         <p class="message">Already registered? <a href="#">Sign In</a></p>
       </form>
       <form class="login-form" action="{{ url_for('login') }}" method="post">

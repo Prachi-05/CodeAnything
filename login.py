@@ -25,15 +25,18 @@ def login():
             found = 1
             break
     if found==1:
-        return render_template(r"profile.html")
+        return render_template(r"main.html")
+    else:
+        return render_template(r"login.html")
 
 
-@app.route("/register", methods = ["POST"])
-def register():
+@app.route("/registration", methods = ["POST"])
+def registration():
     usrn = request.form['newusername']
     pwd = request.form['newpassword']
     eml = request.form['newemail']
     print(usrn, pwd, eml)
+    found=0
     connection = sqlite3.connect(currentdirectory + "\\login.db")
     cur = connection.cursor()
     for row in cur.execute("SELECT username, password, email from userlogin"):
@@ -41,11 +44,20 @@ def register():
         password = row[1]
         email = row[2]
         if userid == usrn:
+            found=1
             if password == pwd and email==eml:
                 return render_template(r"login.html")
-        else:
-            cur.execute("INSERT INTO userlogin(username, password, email) values (?,?,?)", (usrn,pwd,eml))
-            render_template(r"profile.html")
+    connection.close()
+    connection = sqlite3.connect(currentdirectory + "\\login.db")
+    if found==0:
+        connection.execute("INSERT INTO userlogin(username, password, email) values (?,?,?)", (usrn,pwd,eml))
+        connection.commit()
+        #render_template(r"profile.html")
+
+    connection.close()
+
+
+
 
 if __name__ == "__main__":
     app.run()
