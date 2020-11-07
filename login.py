@@ -50,9 +50,10 @@ def registration():
     connection.close()
     connection = sqlite3.connect(currentdirectory + "\\login.db")
     if found==0:
+        pwd = str(hash(pwd))
         connection.execute("INSERT INTO userlogin(username, password, email) values (?,?,?)", (usrn,pwd,eml))
         connection.commit()
-        #render_template(r"profile.html")
+        return render_template(r"profile.html")
 
     connection.close()
 
