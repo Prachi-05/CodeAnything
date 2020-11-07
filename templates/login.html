@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-    <link href="main.css" rel="stylesheet" type="text/css">
+    <link href="/static/main.css" rel="stylesheet" type="text/css">
     
     
 </head>
@@ -19,9 +19,9 @@
         <button><a href="profile.html">Create</a></button>
         <p class="message">Already registered? <a href="#">Sign In</a></p>
       </form>
-      <form class="login-form">
-        <input type="text" placeholder="username"/>
-        <input type="password" placeholder="password"/>
+      <form class="login-form" action="{{ url_for('login') }}" method="post">
+        <input type="text" name="username" placeholder="username"/>
+        <input type="password" name="password" placeholder="password"/>
         <button>login</button>
         <p class="message">Not registered? <a href="#">Create an account</a></p>
       </form>
