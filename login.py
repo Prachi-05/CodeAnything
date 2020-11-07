@@ -9,7 +9,7 @@ app = Flask(__name__)
 def main():
     return render_template(r"login.html")
 
-@app.route("/", methods = ["POST"])
+@app.route("/login", methods = ["POST"])
 def login():
     usrn = request.form['username']
     pwd = request.form['password']
@@ -26,6 +26,27 @@ def login():
             break
     if found==1:
         return render_template(r"profile.html")
+
+
+@app.route("/register", methods = ["POST"])
+def register():
+    usrn = request.form['newusername']
+    pwd = request.form['newpassword']
+    eml = request.form['newemail']
+    print(usrn, pwd, eml)
+    connection = sqlite3.connect(currentdirectory + "\\login.db")
+    cur = connection.cursor()
+    found = 0
+    for row in cur.execute("SELECT username, password, email from userlogin"):
+        userid = row[0]
+        password = row[1]
+        email = row[2]
+        if userid == usrn:
+            if password == pwd and email==eml:
+                return render_template(r"login.html")
+        else:
+            cur.execute("INSERT INTO userlogin(username, password, email) values (?,?,?)", (usrn,pwd,eml))
+            render_template(r"profile.html")
 
 if __name__ == "__main__":
     app.run()
