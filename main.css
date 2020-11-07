@@ -98,6 +98,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+button a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
 
 .job-page{
   width: 100%;
