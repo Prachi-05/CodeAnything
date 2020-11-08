@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import sqlite3
 import os
+import hashlib
+
 
 currentdirectory = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)
@@ -17,7 +19,10 @@ def completed():
 def login():
     usrn = request.form['username']
     pwd = request.form['password']
-    pwd = str(hash(pwd))
+    encoded_message = hashlib.md5(bytes(pwd, encoding='utf8'))
+    converted = encoded_message.hexdigest()
+    pwd= str(converted)
+    print(converted)
     print(usrn, pwd)
     connection = sqlite3.connect(currentdirectory + "\\login.db")
     cur = connection.cursor()
@@ -55,7 +60,10 @@ def registration():
     connection.close()
     connection = sqlite3.connect(currentdirectory + "\\login.db")
     if found==0:
-        pwd = str(hash(pwd))
+        encoded_message = hashlib.md5(bytes(pwd, encoding='utf8'))
+        converted = encoded_message.hexdigest()
+        pwd= str(converted)
+        print(converted)
         connection.execute("INSERT INTO userlogin(username, password, email) values (?,?,?)", (usrn,pwd,eml))
         connection.commit()
         return render_template(r"profile.html")
