@@ -10,7 +10,7 @@
 <body>
     <div class="job-page">
         <div class="form">
-            <form action="" class="job-form">
+            <form action="{{ url_for('completed') }}" method="post" class="job-form">
                 <div class="row">
                     <div class="col">
                         <span class="label">Country</span>
@@ -27,7 +27,7 @@
                 <input type="text" placeholder="eg: Part-time"/>
                 <span class="label">Skill keywords</span>
                 <input type="text" placeholder="eg: baking, frosting, pasteries"/>
-                <a href="login.html"><button>Submit</button></a>
+                <button>Submit</button>
             </form>
         </div>
     </div>

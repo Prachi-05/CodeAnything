@@ -9,10 +9,15 @@ app = Flask(__name__)
 def main():
     return render_template(r"login.html")
 
+@app.route("/completed", methods = ["GET","POST"])
+def completed():
+    return render_template(r"login.html")
+
 @app.route("/login", methods = ["POST"])
 def login():
     usrn = request.form['username']
     pwd = request.form['password']
+    pwd = str(hash(pwd))
     print(usrn, pwd)
     connection = sqlite3.connect(currentdirectory + "\\login.db")
     cur = connection.cursor()
@@ -54,7 +59,6 @@ def registration():
         connection.execute("INSERT INTO userlogin(username, password, email) values (?,?,?)", (usrn,pwd,eml))
         connection.commit()
         return render_template(r"profile.html")
-
     connection.close()
 
 
