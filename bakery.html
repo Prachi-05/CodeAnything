@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jobs Beka</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body> 
+        <div class="app"> 
+            <div class="server"> 
+                <div class="server--name"> 
+                    <button onclick="window.location.href='main.html'"><h1>JOBS</h1></button> 
+                </div>
+                <div class="server--seperator">                    
+                </div>
+                <div class="search"> 
+                    <input type="text" placeholder="Search..."> 
+                </div>  
+                <div class="server--seperator">                    
+                </div> 
+                <button onclick="window.location.href='bakery.html'" class="server--icon"> 
+                    <span>Bakery</span> 
+                </button> 
+                <button onclick="window.location.href='carpentry.html'" class="server--icon"> 
+                    <span>Carpentry</span>  
+                </button> 
+                <button onclick="window.location.href='sales man.html'" class="server--icon"> 
+                    <span>Sales Man</span> 
+                </button>  
+                <div class="server--seperator">                    
+                </div> 
+                <button onclick="location.href='http://chittibot.pythonanywhere.com/'" type="button" class="server--icon" style="background-color: rgb(252, 69, 69);"> 
+                    <span>Chat Bot</span> 
+                </button>
+            </div> 
+            <div class="chat"> 
+                <nav> 
+                    <div class="header"> 
+                        <span>#</span> 
+                        <h2>general - bakery</h2>                           
+                    </div>
+                    <div class="add--job">
+                       <a href="createjob.html">
+                        <button>
+                            <span class="add--job">Add Jobs here!</span>
+                        </button>
+                    </a>
+                    </div> 
+                </nav>
+
+                <div class="chat--inner"> 
+                    <div class="messages"> 
+                        <div class="messages--received">
+                            <div class="card" style="width: 450px; text-align: center; margin: 20px 0 0 20px;">
+                                <h3 class="card-header">Company - Job Title</h3>
+                                <div class="card-body">
+                                  <h4 class="card-title">Location: XYZ</h4>
+                                  <p class="card-text">Employment type: PQR</p>
+                                  <p class="card-text">Job Description: ABC</p>
+                                  <p class="card-text">Skill keywords: H, I, J</p>
+                                </div>
+                              </div>
+                              <div class="card" style="width: 450px; text-align: center; margin: 20px 0 0 20px;">
+                                <h3 class="card-header">Company - Job Title</h3>
+                                <div class="card-body">
+                                  <h4 class="card-title">Location: XYZ</h4>
+                                  <p class="card-text">Employment type: PQR</p>
+                                  <p class="card-text">Job Description: ABC</p>
+                                  <p class="card-text">Skill keywords: H, I, J</p>
+                                </div>
+                              </div>                            
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </body>
+</html>
